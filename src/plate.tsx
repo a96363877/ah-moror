@@ -1,4 +1,6 @@
-export default function Plate(props: {violations:[]}) {
+import { useEffect } from "react";
+
+export default function Plate(props: {violations:[],setIsCheked:any}) {
   return (
     <div
       className="col-sm-12 col-md-6 mt-2"
@@ -21,7 +23,7 @@ export default function Plate(props: {violations:[]}) {
             <div className="row">
               {' '}
               <div className="col-2 align-self-center">
-                <input type="checkbox" className="select-ticket" />
+                <input type="checkbox" className="select-ticket" onChange={(e)=>props.setIsCheked(e.target.checked)} />
               </div>
               <div className="col-10">
                 {' '}

