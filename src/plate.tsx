@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 
-export default function Plate(props: {violations:[],setIsCheked:any}) {
+export default function Plate(props: {violations:any,setIsCheked:any}) {
   return (
     <div
       className="col-sm-12 col-md-6 mt-2"

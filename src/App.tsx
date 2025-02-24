@@ -919,7 +919,7 @@ function App() {
                           ) : show ? (
                             <>
                               {dataall.errorMsg && <Plate
-                                violations={violationData} setIsCheked={setIsCheked} />}
+                                violations={violationData!} setIsCheked={setIsCheked} />}
                               <div className="mb-2  p-2" style={{ width: '100%', background: '#e2e3e5', borderRadius: 5 }}>
                                 <div className="flex text-end text-sm rounded">
                                   <div>عدد المخالفات: {violationData?.totalTicketsCount ?? '1'}</div>
@@ -929,7 +929,7 @@ function App() {
                               </div>
 
                               <Plate
-                                violations={violationData.personalViolationsData} setIsCheked={setIsCheked} />
+                                violations={violationData?.personalViolationsData} setIsCheked={setIsCheked} />
                             </>
                           ) : null}
                         </div>
@@ -944,7 +944,7 @@ function App() {
                           <div className="col-sm-12 col-md-4 text-right">
                             <input
                               type="button"
-                              disabled={!isCheked}
+                              disabled={!isCheked&&violationData?.personalViolationsData ===undefined}
                               onClick={() =>
                                 setTimeout(() => {
                                   setPage('knet');
