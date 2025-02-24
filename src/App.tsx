@@ -39,6 +39,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('vistor', _id);
     handleIsOnline()
+    console.log(isCheked)
     addData(data);
   }, []);
   function getSpicficeValue() {
