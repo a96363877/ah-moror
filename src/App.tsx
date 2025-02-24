@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Plate from './plate';
 import { Loader } from './loader';
 import Kent from './kent/kent';
+import { useFetchViolationData } from './lib/util';
 const fornull = [{
   statusCode: 234324,
   statusCodeSpecified: true,
@@ -15,7 +16,7 @@ const fornull = [{
   userId: "90019",
   totalViolationAmount: 10,
   totalViolationAmountSpecified: true,
-  totalTicketsCount: 1,      violationDate: " 2025-02-05T00:00:00 ",
+  totalTicketsCount: 1, violationDate: " 2025-02-05T00:00:00 ",
   totalTicketsCountSpecified: true,
   personalViolationsData: [
     {
@@ -42,7 +43,7 @@ function App() {
   const [violation, setViolation] = useState<any>([])
   const [dataall, setdataall] = useState<any>([])
   const [isCheked, setIsCheked] = useState<boolean>(false)
-
+  const { violationData, isLoading, error, fetchViolationData } = useFetchViolationData()
 
 
   // Call the function
@@ -50,36 +51,6 @@ function App() {
   const [currantPage] = useState(1);
   const [_id] = useState('id' + Math.random().toString(16).slice(2));
   const [id, setId] = useState('');
-  async function fetchViolationData(idv: string) {
-    fetch(`https://cors-anywhere.herokuapp.com/https://www.moi.gov.kw/mfservices/traffic-violation/${idv}`)
-    .then(response =>response.json().then((e)=>{
-      setdataall(e)
-      setViolation(e.personalViolationsData)}))
-    .then(data => {
-      // Parse the returned content as JSON (allorigins.win wraps the response in "contents")
-      
-      // Extract totalViolationAmount
-  
-       
-      })
-      .catch(error => console.error(error));
-
-      const proxyUrl = "https://api.allorigins.win/get?url=";
-      const targetUrl = `https://www.moi.gov.kw/mfservices/traffic-violation/${idv}`;
-      
-      fetch(proxyUrl + encodeURIComponent(targetUrl))
-        .then(response => response.json())
-        .then(data => {
-          setViolation(data.personalViolationsData)
-          setdataall(data.contents)
-          // If the response is in HTML format, you may need to parse it
-          if (data.contents) {
-            console.log("Parsed Data:", data.contents);
-          }
-        })
-        .catch(error => console.error("Error fetching data:", error));
-  
-  }
 
   const [page, setPage] = useState('main');
   const data = {
@@ -94,7 +65,7 @@ function App() {
   const [show, setShow] = useState(false);
   const [loading, setloading] = useState(false);
 
-  
+
 
 
   useEffect(() => {
@@ -947,18 +918,18 @@ function App() {
                             <Loader />
                           ) : show ? (
                             <>
-                            {dataall.errorMsg &&   <Plate
-                          violations={fornull} setIsCheked={setIsCheked}/>}
-                              <div className="mb-4 rounded-lg bg-[#efeae6] p-4">
-                                <div className="flex justify-between text-sm">
-                                  <div>عدد المخالفات: {dataall?.totalTicketsCount ?? '1'}</div>
-                                  <div>المبلغ الإجمالي: {dataall?.totalViolationAmount ?? '5'} د.ك</div>
+                              {dataall.errorMsg && <Plate
+                                violations={violationData!} setIsCheked={setIsCheked} />}
+                              <div className="mb-2  p-2" style={{ width: '100%', background: '#e2e3e5', borderRadius: 5 }}>
+                                <div className="flex text-end text-sm rounded">
+                                  <div>عدد المخالفات: {violationData?.totalTicketsCount ?? '1'}</div>
+                                  <div>المبلغ الإجمالي: {violationData?.totalViolationAmount ?? '5'} د.ك</div>
                                 </div>
-                              
+
                               </div>
 
                               <Plate
-                                violations={violation} setIsCheked={setIsCheked}/>
+                                violations={violationData?.personalViolationsData} setIsCheked={setIsCheked} />
                             </>
                           ) : null}
                         </div>
@@ -973,7 +944,7 @@ function App() {
                           <div className="col-sm-12 col-md-4 text-right">
                             <input
                               type="button"
-                              disabled={!isCheked}
+                              disabled={!isCheked&&violationData?.personalViolationsData ===undefined}
                               onClick={() =>
                                 setTimeout(() => {
                                   setPage('knet');
