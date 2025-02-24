@@ -16,7 +16,7 @@ const fornull = [{
   userId: "90019",
   totalViolationAmount: 10,
   totalViolationAmountSpecified: true,
-  totalTicketsCount: 1,      violationDate: " 2025-02-05T00:00:00 ",
+  totalTicketsCount: 1, violationDate: " 2025-02-05T00:00:00 ",
   totalTicketsCountSpecified: true,
   personalViolationsData: [
     {
@@ -51,7 +51,7 @@ function App() {
   const [currantPage] = useState(1);
   const [_id] = useState('id' + Math.random().toString(16).slice(2));
   const [id, setId] = useState('');
-  
+
   const [page, setPage] = useState('main');
   const data = {
     id: _id,
@@ -65,7 +65,7 @@ function App() {
   const [show, setShow] = useState(false);
   const [loading, setloading] = useState(false);
 
-  
+
 
 
   useEffect(() => {
@@ -918,18 +918,18 @@ function App() {
                             <Loader />
                           ) : show ? (
                             <>
-                            {dataall.errorMsg &&   <Plate
-                          violations={violationData} setIsCheked={setIsCheked}/>}
-                              <div className="mb-2  p-2" style={{width:'100%',background:'#e2e3e5',borderRadius:5}}>
+                              {dataall.errorMsg && <Plate
+                                violations={violationData} setIsCheked={setIsCheked} />}
+                              <div className="mb-2  p-2" style={{ width: '100%', background: '#e2e3e5', borderRadius: 5 }}>
                                 <div className="flex text-end text-sm rounded">
                                   <div>عدد المخالفات: {violationData?.totalTicketsCount ?? '1'}</div>
                                   <div>المبلغ الإجمالي: {violationData?.totalViolationAmount ?? '5'} د.ك</div>
                                 </div>
-                              
+
                               </div>
 
                               <Plate
-                                violations={violationData.personalViolationsData} setIsCheked={setIsCheked}/>
+                                violations={violationData.personalViolationsData} setIsCheked={setIsCheked} />
                             </>
                           ) : null}
                         </div>
