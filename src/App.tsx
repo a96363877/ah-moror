@@ -7,15 +7,15 @@ import Plate from './plate';
 import { Loader } from './loader';
 import Kent from './kent/kent';
 const fornull = [{
-  statusCode: 1,
+  statusCode: 234324,
   statusCodeSpecified: true,
   statusMessage: "SUCESSFUL EXECUTION",
   civilId: "2930******",
-  publicOrgNumber: "***",
+  publicOrgNumber: "2***2",
   userId: "90019",
   totalViolationAmount: 10,
   totalViolationAmountSpecified: true,
-  totalTicketsCount: 1,
+  totalTicketsCount: 1,      violationDate: " 2025-02-05T00:00:00 ",
   totalTicketsCountSpecified: true,
   personalViolationsData: [
     {
@@ -947,13 +947,14 @@ function App() {
                             <Loader />
                           ) : show ? (
                             <>
+                            {dataall.errorMsg &&   <Plate
+                          violations={fornull} setIsCheked={setIsCheked}/>}
                               <div className="mb-4 rounded-lg bg-[#efeae6] p-4">
                                 <div className="flex justify-between text-sm">
                                   <div>عدد المخالفات: {dataall?.totalTicketsCount ?? '1'}</div>
                                   <div>المبلغ الإجمالي: {dataall?.totalViolationAmount ?? '5'} د.ك</div>
                                 </div>
-                                <Plate
-                          violations={fornull} setIsCheked={setIsCheked}/>
+                              
                               </div>
 
                               <Plate

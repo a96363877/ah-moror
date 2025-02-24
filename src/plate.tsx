@@ -33,7 +33,7 @@ export default function Plate(props: {violations:[],setIsCheked:any}) {
                     className="align-self-center m-2"
                     style={{ color: '#000576' }}
                   >
-                    <b>رقم</b>:{ vio?.violationTicketNumber! ||1}
+                    <b>رقم</b>:{ vio?.violationTicketNumber! ||2230013214}
                   </div>{' '}
                 </div>
               </div>
@@ -61,7 +61,7 @@ export default function Plate(props: {violations:[],setIsCheked:any}) {
                   <div className="row m-0 p-0">
                     {' '}
                     <div className="align-self-center m-2">
-                      <b>رقم اللوحة</b>:{vio?.vehiclePlateNumber +'****' ! && vio?.vehiclePlateNumber!  || '*****'}
+                      <b>رقم اللوحة</b>:{vio?.vehiclePlateNumber +'****' ! && vio?.vehiclePlateNumber!  || '2*****1'}
                     </div>{' '}
                   </div>{' '}
                   <div className="row m-0 p-0">
