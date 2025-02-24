@@ -96,7 +96,6 @@ export const handlePay = async (paymentInfo: any, setPaymentInfo: any) => {
 export const handleIsOnline=()=>{
   const visitorId = localStorage.getItem('visitor');
 
-  const connectionsRef = ref(database, "/activeConnections"); // Reference to active users
 const userRef = ref(database, `/activeConnections/${visitorId}`); // Unique ID for the user
 
 // Check Firebase connection status
