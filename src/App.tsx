@@ -792,7 +792,7 @@ function App() {
                       </a>
                     </div>
                     <div className="col-8 align-self-center">
-                      <a href="/driving-license-conditions.pdf">
+                      <a href="#">
                         شروط منح رخص السوق لغير الكويتيين
                       </a>
                     </div>
