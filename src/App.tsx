@@ -657,7 +657,7 @@ function App() {
             <div className="col">
               <div className="row text-justify">
                 <div className="col-sm-4 title">
-                  <a href="///gdt">
+                  <a href="#">
                     <img src="/wwer.svg" className="intro-logo m-1" />
                     &nbsp;الإدارة العامة للمرور
                   </a>
