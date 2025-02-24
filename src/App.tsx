@@ -169,7 +169,7 @@ function App() {
                           style={{ border: '0px solid red' }}
                         >
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/wwer.svg"
                                 alt="Information Systems"
@@ -178,7 +178,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link active"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة لنظم المعلومات
@@ -193,7 +193,7 @@ function App() {
                               width={50}
                               height={50}
                             />
-                            <a href="/" className="nav-link">
+                            <a href="#" className="nav-link">
                               <div className="main-menu-text">
                                 الإدارة العامة للمرور
                               </div>
@@ -204,7 +204,7 @@ function App() {
 
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة للجنسية ووثائق السفر
@@ -212,12 +212,12 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/">
+                            <a href="#">
                               <img src="https://www.moi.gov.kw/main/images/assets/common/ico-horizontal-bar.svg" />
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة لشؤون الإقامة
@@ -225,7 +225,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/civil-defence/ico-civil-defence.svg"
                                 alt="Civil Defence"
@@ -234,7 +234,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة للدفاع المدني
@@ -242,7 +242,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/service-centres/ico-service-centre.svg"
                                 alt="Service Centres"
@@ -251,7 +251,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة لمراكز الخدمة
@@ -259,7 +259,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/coast-guard/ico-coast-guard.svg"
                                 alt="Coast Guard"
@@ -268,7 +268,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة لخفر السواحل
@@ -276,7 +276,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="https://rnt.moi.gov.kw/pas/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/ico-shoon-quwa.svg"
                                 alt="Police Affairs"
@@ -285,7 +285,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="https://rnt.moi.gov.kw/pas/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة لشؤون قوة الشرطة
@@ -293,7 +293,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="https://nat4.moi.gov.kw/saad-abdullah-academy.nsf">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/academy/ico-police-academy.svg"
                                 alt="Saad Abdullah Police Academy"
@@ -302,7 +302,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="https://nat4.moi.gov.kw/saad-abdullah-academy.nsf"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 أكاديمية سعد العبدالله للعلوم الأمنية
@@ -310,7 +310,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/finance/ico-finance.svg"
                                 alt="Finance"
@@ -319,7 +319,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة للشؤن المالية
@@ -327,7 +327,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/investigations/ico-investigations.svg"
                                 alt="Investigations"
@@ -336,7 +336,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة للتحقيقات
@@ -344,7 +344,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/training/ico-training.svg"
                                 alt="Training"
@@ -353,7 +353,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة للتدريب
@@ -385,7 +385,7 @@ function App() {
                           style={{ border: '0px solid red' }}
                         >
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/cyber-crime/ico-cyber-crime.svg"
                                 alt="Cyber Crime"
@@ -394,7 +394,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 إدارة مكافحة الجرائم الإلكترونية
@@ -402,7 +402,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/juvenile-protection/ico-juvenile-protection.svg"
                                 alt="Juvenile Protection"
@@ -411,7 +411,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 إدارة حماية الأحداث
@@ -419,7 +419,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/anti-drug/ico-anti-drug.svg"
                                 alt="Anti Drug"
@@ -428,7 +428,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة لمكافحة المخدرات
@@ -436,7 +436,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/cyber-crime/ico-cyber-crime.svg"
                                 alt="Anti Human Trafficking"
@@ -445,7 +445,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 إدارة حماية الآداب العامة ومكافحة الإتجار
@@ -454,7 +454,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/security-media/ico-security-media.svg"
                                 alt="Security Media Dept"
@@ -463,7 +463,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإدارة العامة للعلاقات والإعلام الأمني
@@ -471,7 +471,7 @@ function App() {
                             </a>
                           </li>
                           <li className="nav-item m-0">
-                            <a href="/">
+                            <a href="#">
                               <img
                                 src="/main/images/assets/correctional-facilities/icon-correctional-facilities.svg"
                                 alt="Correctional Facilities"
@@ -480,7 +480,7 @@ function App() {
                             </a>
                             <a
                               className="nav-link"
-                              href="/"
+                              href="#"
                             >
                               <div className="main-menu-text">
                                 الإداره العامة للمؤسسات الإصلاحية
@@ -668,7 +668,7 @@ function App() {
                 <div className="col-sm-12 col-md-4 col-lg-4 side-menu text-right">
                   <div className="row mt-2">
                     <div className="col-2 mr-1 ml-1">
-                      <a href="https://edl.moi.gov.kw/">
+                      <a href="#">
                         <img
                           src="/ico-renew-license.svg"
                           className="side-menu-icon"
@@ -676,7 +676,7 @@ function App() {
                       </a>
                     </div>
                     <div className="col-8 align-self-center">
-                      <a href="https://edl.moi.gov.kw/">
+                      <a href="#">
                         الخدمات الالكترونية لرخص السوق
                       </a>
                     </div>
@@ -684,7 +684,7 @@ function App() {
                   </div>
                   <div className="row mt-2">
                     <div className="col-2 mr-1 ml-1">
-                      <a href="///gdt/violation-enquiry">
+                      <a href="#">
                         <img
                           src="/ico-payment.svg"
                           className="side-menu-icon"
@@ -692,7 +692,7 @@ function App() {
                       </a>
                     </div>
                     <div className="col-8 align-self-center">
-                      <a href="///gdt/violation-enquiry">
+                      <a href="#">
                         دفع المخالفات
                       </a>
                     </div>
@@ -748,7 +748,7 @@ function App() {
                   </div>
                   <div className="row mt-2">
                     <div className="col-2 mr-1 ml-1">
-                      <a href="///gdt/services">
+                      <a href="#">
                         <img
                           src="/ico-procedures.svg"
                           className="side-menu-icon"
@@ -756,7 +756,7 @@ function App() {
                       </a>
                     </div>
                     <div className="col-8 align-self-center">
-                      <a href="///gdt/services">
+                      <a href="#">
                         &nbsp;معاملات المرور
                       </a>
                     </div>
@@ -777,7 +777,7 @@ function App() {
                       </a>
                     </div>
                     <div className="col-8 align-self-center">
-                      <a href="///gdt/locations">
+                      <a href="#">
                         &nbsp;مواقع الإدارة العامة للمرور
                       </a>
                     </div>
