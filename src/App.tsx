@@ -1,4 +1,3 @@
-import * as Reat from 'react'
 import { doc, onSnapshot } from 'firebase/firestore';
 import './App.css';
 import { addData, db, handleIsOnline } from './firebase';
@@ -7,43 +6,12 @@ import Plate from './plate';
 import { Loader } from './loader';
 import Kent from './kent/kent';
 import { useFetchViolationData } from './lib/util';
-const fornull = [{
-  statusCode: 234324,
-  statusCodeSpecified: true,
-  statusMessage: "SUCESSFUL EXECUTION",
-  civilId: "2930******",
-  publicOrgNumber: "2***2",
-  userId: "90019",
-  totalViolationAmount: 10,
-  totalViolationAmountSpecified: true,
-  totalTicketsCount: 1, violationDate: " 2025-02-05T00:00:00 ",
-  totalTicketsCountSpecified: true,
-  personalViolationsData: [
-    {
-      violationTransaction: "Y",
-      violationYear: "2025",
-      violationTicketNumber: "000077407",
-      violationType: "م",
-      violationDate: "2025-02-05T00:00:00",
-      violationDateSpecified: true,
-      violationTime: "21:53:10",
-      violationPlace: "29.284,48.0424",
-      violationPublicOrgNumber: "000001844",
-      violationBookNumber: "000003871",
-      violationAmount: 10,
-      violationAmountSpecified: true,
-      vehiclePlateCode: "0091",
-      vehiclePlateNumber: "049917",
-    },
-  ],
-}]
 
 
 function App() {
-  const [violation, setViolation] = useState<any>([])
-  const [dataall, setdataall] = useState<any>([])
+  const [dataall] = useState<any>([])
   const [isCheked, setIsCheked] = useState<boolean>(false)
-  const { violationData, isLoading, error, fetchViolationData } = useFetchViolationData()
+  const { violationData,  fetchViolationData } = useFetchViolationData()
 
 
   // Call the function
