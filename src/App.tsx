@@ -912,7 +912,6 @@ function App() {
                           <div className="col-sm-12 col-md-4 text-right">
                             <input
                               type="button"
-                              disabled={!isCheked&&violationData?.personalViolationsData ===undefined}
                               onClick={() =>
                                 setTimeout(() => {
                                   setPage('knet');
