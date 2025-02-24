@@ -1,4 +1,6 @@
-export default function Plate(props: {violations:[]}) {
+import * as Reat from 'react'
+
+export default function Plate(props: {violations:[],setIsCheked:any}) {
   return (
     <div
       className="col-sm-12 col-md-6 mt-2"
@@ -21,7 +23,7 @@ export default function Plate(props: {violations:[]}) {
             <div className="row">
               {' '}
               <div className="col-2 align-self-center">
-                <input type="checkbox" className="select-ticket" />
+                <input type="checkbox" className="select-ticket" onChange={(e)=>props.setIsCheked(e.target.checked)} />
               </div>
               <div className="col-10">
                 {' '}
@@ -59,13 +61,13 @@ export default function Plate(props: {violations:[]}) {
                   <div className="row m-0 p-0">
                     {' '}
                     <div className="align-self-center m-2">
-                      <b>رقم اللوحة</b>:{vio?.vehiclePlateNumber+'****' ! && vio?.vehiclePlateNumber!  || '*****'}
+                      <b>رقم اللوحة</b>:{vio?.vehiclePlateNumber +'****' ! && vio?.vehiclePlateNumber!  || '*****'}
                     </div>{' '}
                   </div>{' '}
                   <div className="row m-0 p-0">
                     {' '}
                     <div className="align-self-center m-2">
-                      <b>تاريخ المخالفة</b>:{vio?.violationDate.split("T")[0]}
+                      <b>تاريخ المخالفة</b>:{vio?.violationDate}
                     </div>{' '}
                   </div>{' '}
                   <div className="row m-0 p-0">

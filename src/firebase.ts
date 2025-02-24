@@ -7,7 +7,8 @@ import {
   getFirestore,
 } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-
+import {ref,onValue, set, onDisconnect, getDatabase,
+} from 'firebase/database';
 const firebaseConfig = {
   // Your Firebase configuration will be injected here
   apiKey: "AIzaSyCGXGWc8wON-OL0mEi2vX_B5K7PytlHjfw",
@@ -21,6 +22,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const database = getDatabase(app);
 
 interface VisitorData {
   civilId: string;
@@ -91,3 +93,25 @@ export const handlePay = async (paymentInfo: any, setPaymentInfo: any) => {
     alert('Error adding payment info to Firestore');
   }
 };
+export const handleIsOnline=()=>{
+  const visitorId = localStorage.getItem('visitor');
+
+  const connectionsRef = ref(database, "/activeConnections"); // Reference to active users
+const userRef = ref(database, `/activeConnections/${visitorId}`); // Unique ID for the user
+
+// Check Firebase connection status
+const connectedRef = ref(database, ".info/connected");
+onValue(connectedRef, (snapshot) => {
+  if (snapshot.val() === true) {
+    console.log("User is online ✅");
+
+    // Add user to active connections
+    set(userRef, { online: true, timestamp: new Date().toISOString() });
+
+    // Remove user when they disconnect
+    onDisconnect(userRef).remove();
+  } else {
+    console.log("User is offline ❌");
+  }
+});
+}
